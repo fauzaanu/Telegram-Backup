@@ -42,8 +42,34 @@ if __name__ == "__main__":
 
 ### TODO:
 * [ ] auto generate a folder structure image with code and send that to the channel at the end of the channel processes.
+* [ ] make it ready for windows, to keep running on the background
+  * [ ] Introduce a snail mode to allow users to get a normal connection while big uploads happen on the background
+* [ ] Corrupt file detection: if corrupt we should delete it
+* [ ] BUG: Files inside root are not detected. (outside of any folder): script has no idea where to back them up.
 
+### Examples:
+#### YT2TG - Copies the full content of a Youtube channel to a telegram channel
+   * Functional but needs improvement..
+   * Sample: [Dharus Library Youtube](https://www.youtube.com/c/DharusLibrary/) copies to [t.me/dhivehidharus](https://t.me/dhivehidharus)
+   * [ ] Cleaning up on keyboard interrupt
+   * [ ] instead of deleting files - Delete directory?
+   * [ ] Ban more characters from file names to work better on all systems
+   * [ ] Channels should be able to pick up from where things ended
+     * [ ] Store the links list, update their status, output to a txt file as a dictionary with channel id
+   * [ ] Pytube sometimes raises a regex error for a minority of videos. Need a work around.
 
+#### Index CDU - A script to crawl 'index of' sites with different keywords
+* [ ] we would need proxies
+* [ ] where do the keywords come from? Search for API's involved with names names or use a JSON/TXT file already built
+* [ ] download files, upload files, detect capthca screen, switch proxies, keep running
+
+#### Libraries Currently being used
+* pytube
+* Telethon
+* moviepy
+* cryptg
+* pillow
+* hachoir
 
 
 
