@@ -13,6 +13,8 @@ class YT2TG:
         self.root = root
         self.limit = limit  # does nothing now
 
+
+        # todo: record api keys and stuff early. now it is too late
         try:
             # folder structure
             thisdir = os.getcwd()

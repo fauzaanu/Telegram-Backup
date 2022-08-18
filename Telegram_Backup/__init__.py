@@ -2,8 +2,10 @@ import glob
 from telethon.sync import TelegramClient
 import os
 from telethon.tl import functions
+from moviepy.video.io.VideoFileClip import VideoFileClip
 
 
+linux_windows = os.sep
 class Backup:
     def __init__(self, root_folder, api_id, api_hash):
         pass
@@ -70,10 +72,10 @@ class Backup:
 
         # if folder is present then lets go ahead
         else:
-            for filename in glob.iglob(f'{root}//{folder}//**', recursive=True):
+            for filename in glob.iglob(f'{root}{linux_windows}{folder}{linux_windows}**', recursive=True):
 
                 print(filename)
-                pretty_filename = str(filename).replace(f'{root}//', '')
+                pretty_filename = str(filename).replace(f'{root}{linux_windows}', '')
 
                 if os.path.isdir(filename):
                     if not silent:
@@ -84,13 +86,19 @@ class Backup:
                 else:
                     if 'mp4' in filename:
                         emoji = self.media_emoji
+                        self.generate_thumb(filename,"thumb.png")
                     else:
                         emoji = self.file_emoji
 
                     with self.client as clientx:
                         print(filename, "sending file")
-                        clientx.send_file(channel_id, filename, supports_streaming=True, force_document=False,
-                                          caption=f"```{emoji} {pretty_filename}```")
+                        if 'mp4' in filename:
+                            clientx.send_file(channel_id, filename, supports_streaming=True, force_document=False,
+                                              caption=f"```{emoji} {pretty_filename}```", thumb = 'thumb.png')
+                        else:
+                            clientx.send_file(channel_id, filename, supports_streaming=True, force_document=False,
+                                              caption=f"```{emoji} {pretty_filename}```")
+                        os.remove('thumb.png')
 
     def clean(self):
         """
@@ -98,3 +106,11 @@ class Backup:
 
         :return:
         """
+        pass
+        # remove the directory - this cleaning up should be present in the backup
+        # os.rmdir(f'{thisdir}{linux_windows}{self.root}{linux_windows}{self.channel}')
+
+    def generate_thumb(self,clip,save_location):
+        with VideoFileClip(f"{clip}") as clip:
+            clip.save_frame(f"{save_location}", t=10)
+
