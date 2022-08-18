@@ -1,7 +1,7 @@
 # Telegram Backup
 
 Telegram has an unlimited cloud file storage.
-The limit however is a per file limit which is 2GB for normal users & 4GB for premium users. Most of our files that are important and need to be backed up are not more than a GB. A 2k Quality Movie File goes upto to 3GB on average. So Telegram seems to be a good place to backup files. & This is a tool to do just that.
+The limit however is a per file limit which is 2GB for normal users & 4GB for premium users. So Telegram seems to be a good place to backup files. & This is a tool to do just that.
 
 ## Telethon is used
 A user account is used because Bots have limits and users dont. And premium users get extra 2GB while there isnt anything like a premium bot yet. Telethon seems to achieve this fairly easily.
