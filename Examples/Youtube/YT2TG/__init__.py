@@ -1,5 +1,5 @@
 import os
-from pytube import Channel, YouTube
+from pytube import Channel, YouTube, Playlist
 from pytube.exceptions import RegexMatchError
 
 import Telegram_Backup
@@ -25,7 +25,13 @@ class YT2TG:
                                                  api_hash=self.hash)
 
         try:
-            self.all_vids = Channel(channel_link).video_urls
+            if "/videos" in channel_link:
+                self.all_vids = Channel(channel_link).video_urls
+            elif "/playlist" in channel_link:
+                self.all_vids = Playlist(channel_link).video_urls
+            else:
+                print("Your link cannot be recognized. /videos or /playlist must be present on the link")
+                return
         except RegexMatchError:
             print("Regex Match Error")
             return

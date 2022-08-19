@@ -8,8 +8,10 @@ if __name__ == "__main__":
 
     # CHANNELS
     channels = {
-        "Apple": ('https://www.youtube.com/c/CusterPlays/videos', 0),
+        "IBU": ('https://www.youtube.com/playlist?list=PLmhEztcg6lpBNsiW65VZchXljxLBq-Ie6', 0),
     }
+
+
 
     # channels['key'][0] means channel link
     # channels['key'][1] means channel id
