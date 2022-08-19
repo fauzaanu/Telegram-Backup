@@ -75,7 +75,7 @@ class YT2TG:
 
                     # YouTube Download
                     print(f"Begginign download of {video_url} as {video_name}")
-                    saved_file = yt.streams.first().download(
+                    saved_file = yt.streams.get_highest_resolution().download(
                         output_path=output_dir,
                         filename=f'main.mp4')
                     print(f"Youtube Downloading complete {saved_file}")
