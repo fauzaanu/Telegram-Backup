@@ -1,5 +1,7 @@
 import os
 from pytube import Channel, YouTube
+from pytube.exceptions import RegexMatchError
+
 import Telegram_Backup
 import shutil
 
@@ -21,7 +23,13 @@ class YT2TG:
         self.thisdir = os.getcwd()
         self.backup_obj = Telegram_Backup.Backup(f'{self.thisdir}{linwin_sep}{self.root}', api_id=self.api_key,
                                                  api_hash=self.hash)
-        self.all_vids = Channel(channel_link).video_urls
+
+        try:
+            self.all_vids = Channel(channel_link).video_urls
+        except RegexMatchError:
+            print("Regex Match Error")
+            return
+
         self.channel_id = 0
 
         if force_id != 0:
