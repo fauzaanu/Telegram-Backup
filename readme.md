@@ -50,7 +50,10 @@ if __name__ == "__main__":
 ### Examples:
 #### YT2TG - Copies the full content of a Youtube channel to a telegram channel
    * Functional but needs improvement..
-   * Sample: [Dharus Library Youtube](https://www.youtube.com/c/DharusLibrary/) copies to [t.me/dhivehidharus](https://t.me/dhivehidharus)
+   * Sample: 
+      * [Dharus Library Youtube](https://www.youtube.com/c/DharusLibrary/) copies to [t.me/dhivehidharus](https://t.me/dhivehidharus)
+      * [James Vietch](https://www.youtube.com/c/jamesveitch/) copied to [t.me/jamesveitch](https://t.me/jamesveitch)
+   *
    * [ ] Cleaning up on keyboard interrupt
    * [ ] instead of deleting files - Delete directory?
    * [ ] Ban more characters from file names to work better on all systems
