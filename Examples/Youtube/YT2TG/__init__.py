@@ -1,5 +1,5 @@
 import os
-from pytube import Channel, YouTube, Playlist
+from pytube import Channel, YouTube, Playlist, Search
 from pytube.exceptions import RegexMatchError
 
 import Telegram_Backup
@@ -14,6 +14,7 @@ class YT2TG:
         self.channel = channel_name
         self.root = root
         self.limit = limit  # does nothing as of now
+        self.search_mode = []
 
         self.api_key = int(api_key)
         self.hash = hash
@@ -29,6 +30,12 @@ class YT2TG:
                 self.all_vids = Channel(channel_link).video_urls
             elif "/playlist" in channel_link:
                 self.all_vids = Playlist(channel_link).video_urls
+
+            elif type(channel_link) == list():
+                for search_term in channel_link:
+                    self.search_mode.append(Search(search_term))
+                self.all_vids = self.search_mode
+
             else:
                 print("Your link cannot be recognized. /videos or /playlist must be present on the link")
                 return
@@ -71,7 +78,12 @@ class YT2TG:
                     print(f"Amount of Files inside {output_dir} is {len(os.listdir(output_dir))}")
 
                 try:
-                    yt = YouTube(video_url)
+                    if len(self.search_mode) == 0:
+                        yt = YouTube(video_url)
+                    else:
+                        yt = video_url
+
+
 
                     banned_chars = ["!", "?", "-", ":", "|", " ", "<", ">", ":", '"', '/', '\\', "+", "&", "^", "="]
 
