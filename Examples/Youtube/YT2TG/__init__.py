@@ -31,7 +31,8 @@ class YT2TG:
             elif "/playlist" in channel_link:
                 self.all_vids = Playlist(channel_link).video_urls
 
-            elif type(channel_link) == list():
+            elif isinstance(channel_link,list):
+                print(isinstance(channel_link,list))
                 for search_term in channel_link:
                     self.search_mode.append(Search(search_term))
                 self.all_vids = self.search_mode

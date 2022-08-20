@@ -16,4 +16,5 @@ if __name__ == "__main__":
 
     # THE ACT
     for channel_name, channel_link in channels.items():
-        YT2TG(channel_name, channel_link[0], key, hash, limit=1, root='uploads', force_id=channel_link[1])
+        #YT2TG(channel_name, channel_link[0], key, hash, limit=1, root='uploads', force_id=channel_link[1])
+        type(channel_link[0])
