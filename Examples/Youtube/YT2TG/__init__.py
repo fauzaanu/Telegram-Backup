@@ -34,7 +34,7 @@ class YT2TG:
             elif isinstance(channel_link,list):
                 print(isinstance(channel_link,list))
                 for search_term in channel_link:
-                    yt_obj = Search(search_term).results()
+                    yt_obj = Search(search_term).results
                     self.search_mode.append(yt_obj)
                 self.all_vids = self.search_mode
 
